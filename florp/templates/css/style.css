@@ -1,0 +1,25 @@
+body {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.5;
+  font-size: 18px;
+  color: #3C3836;
+  padding: 0 10px;
+  background: #FBF1C7;
+}
+
+hr {
+  color: #7C6F64;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+}
+
+a {
+  color: #076678;
+}
+
+a:visited {
+  color: #8f3f71;
+}

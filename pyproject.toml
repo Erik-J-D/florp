@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "florp"
+version = "0.1.0"
+description = ""
+authors = ["Erik Derohanian <erik@erik-j.de>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Markdown = "^3.3.4"
+types-Markdown = "^3.3.3"
+Pygments = "^2.10.0"
+Flask = "^2.0.1"
+watchdog = "^2.1.5"
+Flask-SocketIO = "^5.1.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[tool.poetry.scripts]
+florp = "florp.florp:florp_cli"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.yapf]
+spaces_before_comment = 2
+column_limit = 79
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 79
