@@ -1,4 +1,5 @@
 import os
+import logging
 import sys
 import webbrowser
 from threading import Timer
@@ -14,8 +15,17 @@ from watchdog.events import (  # type: ignore
 )
 from watchdog.observers import Observer  # type: ignore
 
+# Turn off flask banner
+cli = sys.modules['flask.cli']
+cli.show_server_banner = lambda *x: None  # type: ignore
+
+# Flask app + turn off logging
 app = Flask(__name__)
+app.logger.disabled = True
+log = logging.getLogger('werkzeug')
+log.disabled = True
 socketio = SocketIO(app)
+
 PORT = 6453
 NO_FILENAME_ERR = '''
 florp needs a filename to run:
@@ -87,6 +97,8 @@ def florp_cli(args: list[str] = None) -> None:
     event_handler = evtHandler()
     observer.schedule(event_handler, filename)
     observer.start()
+
+    print(f'Serving {filename} at http://127.0.0.1:{PORT}/')
 
     Timer(0.1, open_browser).start()
     socketio.run(app, port=PORT)
