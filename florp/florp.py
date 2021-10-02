@@ -1,5 +1,5 @@
-import os
 import logging
+import os
 import sys
 import webbrowser
 from threading import Timer
@@ -14,6 +14,8 @@ from watchdog.events import (  # type: ignore
     FileSystemEventHandler,
 )
 from watchdog.observers import Observer  # type: ignore
+
+from .markdown_checklist import CheckboxExtension
 
 # Turn off flask banner
 cli = sys.modules['flask.cli']
@@ -40,7 +42,8 @@ def markdown_file_to_html(filename: str) -> str:
         'sane_lists',
         'md_in_html',
         'fenced_code',
-        'codehilite'
+        'codehilite',
+        CheckboxExtension()
     ])
 
 
