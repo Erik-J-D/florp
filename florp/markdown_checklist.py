@@ -4,11 +4,11 @@ import xml.etree.ElementTree as ET
 from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
 
-item_pattern = re.compile(r'^\[([ Xx])\](.*)$', re.MULTILINE)
+item_pattern = re.compile(r'^\[([ Xx])\](.*)$')
 
 
 class CheckboxExtension(Extension):
-    def extendMarkdown(self, md):
+    def extendMarkdown(self, md) -> None:
         md.treeprocessors.register(CheckboxTreeProcessor(), 'checklist', 9999)
 
 
@@ -19,8 +19,8 @@ class CheckboxTreeProcessor(Treeprocessor):
                 continue
             match = item_pattern.match(el.text)
             if match:
-                check = ET.Element('input')
-                check.attrib = {'type': 'checkbox', 'disabled': ''}
+                check = ET.Element(
+                    'input', attrib={'type': 'checkbox', 'disabled': ''})
                 if match[1].lower() == 'x':
                     check.attrib['checked'] = ''
                 el.insert(0, check)
