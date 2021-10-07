@@ -15,6 +15,8 @@ class CheckboxExtension(Extension):
 class CheckboxTreeProcessor(Treeprocessor):
     def run(self, root) -> None:
         for el in root.iter('li'):
+            if not el.text:
+                continue
             match = item_pattern.match(el.text)
             if match:
                 check = ET.Element('input')
