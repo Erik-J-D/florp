@@ -7,8 +7,7 @@ Markdown Browser Viewer
 ```
 $ poetry install
 $ poetry build
-$ pip install wheel
-$ pip install dist/florp-0.1.0-py3-none-any.whl
+$ pipx install dist/florp-0.1.0-py3-none-any.whl
 ```
 
 ## Usage
